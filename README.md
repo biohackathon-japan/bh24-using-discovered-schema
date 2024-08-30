@@ -1,74 +1,34 @@
-# BH24 BioHackrXiv Publication Template
+Reusing discovered schema
+--------------------------
 
-Minimal example of a [BioHackrXiv](https://biohackrxiv.org/) publication that can be generated with the
-[Preview Service](http://preview.biohackrxiv.org/).
+During this biohackathon, we have been able to find several use cases for automatically discovered schemes. In most cases, there has not been enough time in order to produce a working prototype to cover the whole use case, but we were able to extract sample schemes and discuss plans to use them.
 
-## Step 1: Clone this Template Repository
+Among others, we have detected, discussed and/or extracted shapes for the following use cases:
 
-This repository is a template repository. This means that you can hit the green "Use this template"
-button (after logging in) to use it as a template to start a new BioHackrXiv Publication:
+- Intermine: Intermine is [...] (Gos). 
 
-![Screenshot of the green "Use this template" button.](paper/use-this-template.png)
+A number of elements in this portal are automatically generated from an internal ad-hoc serialization of the data models. However, those data models are written by humans. By using sheXer to produce ShEx shapes, we'd been able to produce a standard schema describing such data models. Also, we have that the expressiveness of ShEx is good enough in order to fully represent all the information required in this use case. Replacing the current internal data model by auto-generating ShEx schemes, that may or may not be reviewd by humans, could improve maintanance times at the time a standard vocabulary is being used.
 
-## Step 2: Configuring the Markdown
+- BioThings is [...] (Chieng).
 
-The publication Markdown is found in the `paper/paper.md` file. At the top you can edit the
-YAML code with metadata. It is important to get this part correct, because otherwise the PDF
-generation will fail. The metadata looks like this:
+The current data models internally used in BioThings are expressend in a JSON representation. Such approach is currently enough to provide the neccesary services, but its not RDF. Nevertheless, we've found that transforming such representation into ShEx schemas is feasible. This could have two advantages. On the one side, the data could be transformed to be fully compatible with semantic web technologies. On the other hand, the ShEx schemas coudl be used along with schema validators for data maintenance.
 
-```yaml
-title: 'DBCLS BioHackathon 2024 Report for Project: Genome variation'
-title_short: 'BioHackJP24: Genome variation'
-tags:
-  - Genomics
-  - Human genetics
-authors:
-  - name: Toshiaki Katayama
-    affiliation: 1
-affiliations:
-  - name: Database Center for Life Science, Research Organization for Information and Systems
-    index: 1
-date: 31 August 2024
-cito-bibliography: paper.bib
-event: BH24JP
-biohackathon_name: "DBCLS BioHackathon 2024"
-biohackathon_url:   "https://2024.biohackathon.org/"
-biohackathon_location: "Fukushima, Japan, 2024"
-group: Genome variation
-# URL to project git repo --- should contain the actual paper.md:
-git_url: https://github.com/biohackathon-japan/bh24-genome-variation
-# This is the short authors description that is used at the
-# bottom of the generated paper (typically the first two authors):
-authors_short: Toshiaki Katayama \emph{et al.}
-```
+- Generation of federated queries (Nuria). 
 
-### Which metadata to update?
+A number of uses cases require to gather data to create temporal knowledge graphs. KG subsetting/combination for specific purposes, machine learning... A frequent need to create such graphs is using federated queries. Such queries are frequently hard to write. We have found that ShEx schemas could contain the information require to fully generate or assist the generation of SPARQL queries. In different ways: creation of mappings, suggestion of terms, graph pattern validation...
 
-#### To change
+- Rdf-config is [...] (Yasunori).
 
-The following fields should be changed:
+Rdf-config is based on YAML files. The information contained in those files could be all found in ShEx schemes. Then, transforming the automatically extracted into RDF-config files could improve most of the workflows in which RDF-config is integrated.
 
-* title
-* title_short
-* tags
-* authors
-* affiliations
-* date
-* group
-* authors_short
+- VOID data can be used to describe the contents offered in an RDF dataset or SPARQL endpoint. This tyoe of information can be useful for query optimization, but also for several other purposes (Maybe to be completed by Jerven). ShEx schemas cannot be tranformed into void, even if complete void data can indeed be used to get ShEx schemas. However, during the processes required to get the schemas with the sheXer tool, it is possible to generate void data.
 
-Particularly important to update is the following field, which should point to
-your clone of the template, instead of the template itself:
 
-* git_url: https://github.com/biohackathon-japan/bh24-genome-variation
+Visualization
+-------------
 
-## Step 3: Writing the article
+Even if we have not been able to produce prototype code with human-friendlier visualizations of ShEx schemes, several promising ideas have been proposed during the biohackathon.
 
-A full Markdown example is given in [paper/paper.md](paper/paper.md). This includes instructions how to include
-figures, tables, and annotate citations with the Citation Typing Ontology.
-
-## Step 4: Previewing the paper as PDF
-
-This repository can be converted into a preview PDF with BioHackrXiv [Preview Server](http://preview.biohackrxiv.org/).
-The preview website asks for the link to your repository and will automatically find the `paper.md` and create an PDF.
-
+- Kozo: y
+- Yasunori:
+- Labra: 
