@@ -24,11 +24,14 @@ Rdf-config is based on YAML files. The information contained in those files coul
 - VOID data can be used to describe the contents offered in an RDF dataset or SPARQL endpoint. This tyoe of information can be useful for query optimization, but also for several other purposes (Maybe to be completed by Jerven). ShEx schemas cannot be tranformed into void, even if complete void data can indeed be used to get ShEx schemas. However, during the processes required to get the schemas with the sheXer tool, it is possible to generate void data.
 
 
-Visualization
--------------
+Visualizations
+--------------
 
-Even if we have not been able to produce prototype code with human-friendlier visualizations of ShEx schemes, several promising ideas have been proposed during the biohackathon.
+The current visualizations of ShEx schemas (mostly based on UML or UML-like representations) fail to be really useful for human readers when the decipted schemas contain too many shapes, as the graphic representatio of that becomes too big. Even if we have not been able to produce prototype code with human-friendlier visualizations of ShEx schemes, several promising ideas have been proposed during the biohackathon.
 
-- Kozo: y
-- Yasunori:
-- Labra: 
+- Kozo: Kozo has suggested to implement a visualization based on yFiles graphs. Once the ShEx schema has been extracted, it could be parsed into a different library (probably Pyshex) to walk its AST representation as object model objects. The connection berween schema, as well as some other data, could be used then for developing a graph-like representation of shape connections.
+  
+- Jose: Jose suggests to implment several html representations focussed on parts of the graph described by schema relations. Each html view would be centered in a given shape, and only the shapes with direct links from/to it would be represented. Then, huge schemas could be explored partially and more confortably for human readers.
+  
+- Yasunori: Yasunori suggest an improvement over Jose's proposal. He envisions a map-like representation of schemas, where you can zoom in/out certain regions. The core idea is similar to Jose's one: being able to explore huge schemas by onl considering local parts. But, in this case, those parts would not be limited by static representations of a shape and its inmediate neighborhood, but dinamically generation so the subgraph of related shapes ploted could have other shapes non-conected directly to the seed one, with a configurable depth for exploring the neigborhood. 
+
