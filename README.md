@@ -9,7 +9,7 @@ Among others, we have detected, discussed and/or extracted shapes for the follow
 
 A number of elements in this portal are automatically generated from an internal ad-hoc serialization of the data models. However, those data models are written by humans. By using sheXer to produce ShEx shapes, we'd been able to produce a standard schema describing such data models. Also, we have that the expressiveness of ShEx is good enough in order to fully represent all the information required in this use case. Replacing the current internal data model by auto-generating ShEx schemes, that may or may not be reviewd by humans, could improve maintanance times at the time a standard vocabulary is being used.
 
-- BioThings is [...] (Chieng).
+- BioThings is [...] (Chunlei).
 
 The current data models internally used in BioThings are expressend in a JSON representation. Such approach is currently enough to provide the neccesary services, but its not RDF. Nevertheless, we've found that transforming such representation into ShEx schemas is feasible. This could have two advantages. On the one side, the data could be transformed to be fully compatible with semantic web technologies. On the other hand, the ShEx schemas coudl be used along with schema validators for data maintenance.
 
