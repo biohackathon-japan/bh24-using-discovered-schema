@@ -20,7 +20,7 @@ authors:
     orcid: 0000-0000-0000-0000
   - name: Yasunori Yamamoto
     affiliation: 2
-    orcid: 0000-0000-0000-0000
+    orcid: 0000-0002-6943-6887
   - name: Andra Waagmaaster
     affiliation: 2
     orcid: 0000-0000-0000-0000
