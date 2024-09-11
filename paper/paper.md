@@ -25,8 +25,8 @@ authors:
     affiliation: 2
     orcid: 0000-0000-0000-0000
   - name: Kozo Nishida
-    affiliation: 2
-    orcid: 0000-0000-0000-0000
+    affiliation: 3
+    orcid: 0000-0001-8501-7319
   - name: Hikaru Nagazumi
     affiliation: 2
     orcid: 0000-0000-0000-0000
@@ -44,6 +44,8 @@ affiliations:
     index: 1
   - name: Second Affiliation
     index: 2
+  - name: Department of Biotechnology and Life Science, Tokyo University of Agriculture and Technology, 2-24-16 Nakacho, Koganei-shi, Tokyo, 184-8588, Japan
+    index: 3
 date: 04 September 2024
 cito-bibliography: paper.bib
 event: BH24
