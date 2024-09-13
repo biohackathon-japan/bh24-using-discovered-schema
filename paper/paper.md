@@ -35,17 +35,22 @@ authors:
     orcid: 0000-0000-0000-0000
   - name: Gos Micklem
     affiliation: 2
-    orcid: 0000-0000-0000-0000
+    affiliation: 4
+    orcid: 0000-0002-6883-6168
   - name: Chunlei Wu
     affiliation: 2
     orcid: 0000-0000-0000-0000
 affiliations:
   - name: Weso Research Group, University of Oviedo, Spain
     index: 1
-  - name: Second Affiliation
+  - name: Database Center for Life Science (DBCLS), University of Tokyo Kashiwa-no-ha Campus Station Satellite 6F. 178-4-4 Wakashiba, Kashiwa-shi, Chiba, Japan
     index: 2
   - name: Department of Biotechnology and Life Science, Tokyo University of Agriculture and Technology, 2-24-16 Nakacho, Koganei-shi, Tokyo, 184-8588, Japan
     index: 3
+  - name: Department of Genetics, University of Cambridge, Cambridge CB2 3EH, United Kingdom
+    index: 4
+  
+    
 date: 04 September 2024
 cito-bibliography: paper.bib
 event: BH24
@@ -65,12 +70,12 @@ authors_short: First Author \emph{et al.}
 
 RDF shape languages, such as SHACL and ShEx, are based on the concept of "shape." A shape describes the expected topology around specific types of nodes within an RDF graph. These shapes can be combined into schemas that describe the various local topologies expected around different node types, allowing for the expression of complex patterns that fully describe the topology of a given RDF source. Such schemas have primarily been used for two main purposes: validation and description of RDF data.
 
-On one hand, a source and a schema can be processed by validation software to check whether the graph structure conforms to the patterns defined by the shapes, producing validation reports if discrepancies are found. These reports can be used by data maintainers to take corrective actions to preserve the graph's structure. On the other hand, schemas can help users understand the expected structure of a dataset, enabling them to add or edit information while maintaining the desired structure or writing appropriate queries.
+On the one hand, a source and a schema can be processed by validation software to check whether the graph structure conforms to the patterns defined by the shapes, producing validation reports if discrepancies are found. These reports can be used by data maintainers to take corrective actions to preserve the graph's structure. On the other hand, schemas can help users understand the expected structure of a dataset, enabling them to add or edit information while maintaining the desired structure, or enabling them to write appropriate queries.
 
 Writing and maintaining RDF schemas can be a time-consuming task, especially when many different shapes are involved. This often requires the expertise of domain specialists. To address this challenge, several approaches for automatic schema discovery have been proposed (CITE sheXer, Jerven’s [tool name! how to cite? @Jerven], Consolidation, Astrea, QSE...). These approaches analyze existing RDF data to extract or infer expected structures and express them as RDF shapes. Although automatically generated shapes may not be as accurate as those created by humans — particularly in complex data models requiring advanced features such as negation or disjunction — they can be quite effective in simpler models or as a draft that domain experts can later refine.
 
 
-A schema is essentially a machine-readable way to express an RDF data model. This model can capture information such as the properties that should connect different node types, the cardinality of those relationships, or the expected datatypes for literals in various contexts. Schemas can also be annotated with ad-hoc RDF properties to express additional concepts at different levels (e.g., at the shape level or within specific constraints).
+A schema is essentially a machine-readable way to express an RDF data model. This model can capture information such as the properties that should connect different node types, the cardinality of those relationships, or the expected datatypes for literals in various contexts. Schemas can also be annotated with ad-hoc RDF properties to express additional concepts at different levels (e.g. at the shape level or within specific constraints).
 
 Although the traditional uses of RDF schemas are validation and description, their expressiveness and format make them suitable for a variety of other purposes. In this report, we describe several use cases for RDF shapes, particularly focusing on automatically extracted schemas. These use cases were discussed and/or partially implemented by the authors during the 2024 edition of the DBCLS BioHackathon in Fukushima.
 
@@ -86,10 +91,17 @@ Many applications built using Domain-Driven-Design (DDD) architectures, especial
 
 During this BioHackathon, we discussed the adoption of ShEx schemas as a data model description in two Life Sciences platforms:
 
+*Intermine*: InterMine (http://intermine.org) is a framework to build large-scale integrated data resources (e.g. https://www.humanmine.org, https://www.flymine.org). InterMine is a model-driven system in the sense that the front and back-ends configure themselves based on a (currently XML) description of the data model: there is extensive use of automatic code generation. InterMine was designed to enable biological data to be queried flexibly without learning a database query language but also, through RESTful APIs, to enable the use of the data by other programs. Code is generated automatically for any query, to be used with Python, Ruby, Perl, Java and Javascript client libraries.
 
-*Intermine*: Intermine is [...] @Gos.
-A number of elements in this portal are automatically generated from an internal ad-hoc serialization of the data models: templates, example queries, web views, etc. However, these data models are written by humans. By using an automatic shape extractor to mine the actual data and produce data models, it would be possible to create an equivalent description of the data model and, over time, evolve towards fully automatic content generation based on the data itself. Additionally, the schemas could be exposed as part of the data, enabling reuse for other purposes beyond InterMine’s services.
+Central to InterMine's interface is the ability to use lists of biological entities within queries and to upload, combine, save and export these lists in flexible ways. As lists can be created from query outputs and used within queries, iterative analysise is facilitated. 
 
+Another feature of InterMine's interface are "template queries".  The templates are a library of simple fill-out-the-form interfaces. They can be used to solve routine queries, or as starting points to build more complex queries within the query builder. A template can be built from a query using the query builder, by providing a title, description and default values. Templates automatically provide corresponding web services. ShEx and its facility to include machine-readable comments provides the potential to provide a static description of any template query and this potential was investigated in another BioHackathon 2024 project (@Jose ***).
+
+Currently InterMine has a hand-written core data model, which includes the Sequence Ontology (***), and when different data sources are loaded they can, if needed, bring further additions to this model. During BioHackathon 2024 we explored the potential for sheXer to infer a data model that could be used to configure an InterMine database. This is of interest as it could enable the InterMine user interface (BlueGenes ***) to work on any SPARQL endpoint. Work at earlier BioHackathons provided useful starting material: proof-of-concept work at the 2023 BioHackathon (****) and subsequently by Francois Belleau (BOSC REF***) has established a version of the FlyMine database in the QLever (****) backend, kindly hosted by Hannah Bast (****). Further work (*** domestic hackathon) generated proof-of-concept code that translates the FlyMine template query library into SPARQL that runs on this endpoint. 
+
+Here we were able to use sheXer, an automatic shape extractor, to mine the FlyMine-QLever endpoint, and to assess that the model inferred could be used to construct a suitable model for use within InterMine, though code to do this has not yet been written. Thus in future we can in principle 1) run sheXer on a SPARQL endpoint to infer the schema; 2) generate an InterMine model file from the inferred schema; 3) re-write queries generated by the InterMine user interface into SPARQL that can 4) be run on the original SPARQL endpoint and 5) write code that translates the results into the JSON that the user interface is expecting. This would generate a complete proof-of-concept of using the BlueGenes InterMine user interface on top of a SPARQL endpoint. We plan to use the above FlyMine-QLever endpoint as a test case because the underlying data model is understood and we can compare performance to that of the existing FlyMine database. It is already clear from running the most complex FlyMine template query on the FlyMine-QLever endpoint that performance of QLever is excellent.
+
+Thus we have demonstrated that it is possible to infer an equivalent description of the InterMine data model and have a plan to develop the use of the InterMine BlueGenes user interface on arbitrary SPARQL endpoints.
 
 *BioThings*: Biothings is [...] @Chunlei.
 
@@ -111,7 +123,7 @@ During this BioHackathon, a prototype for validating queries using ShEx schemas 
 
 * SPARQL term suggestion. The reasoning used for SPARQL validation can also be applied to generate suggestions while writing SPARQL queries. If it is possible to infer that a certain element in a query should conform to a shape’s topology, suggestions can be made to help the user write adequate properties or datatypes.
 
-## Mappings to other sintaxys
+## Mappings to other syntaxes
 
 While we dedicated a section to the generation and validation of SPARQL queries, the broader idea of mapping schemas to other types of outputs is also significant.
 
@@ -122,17 +134,17 @@ Although shape schemes cannot be directly mapped to VOID data, we've identified 
 
 ## Visualizations
 
-Shape schemas can be useful for describing the structure of data sources for users familiar with semantic web technologies or those with experience in formal languages and data modeling. for users familiar with semantic web technologies or those with experience in formal languages and data modeling.
+Shape schemas can be useful for describing the structure of data sources for users familiar with semantic web technologies or those with experience in formal languages and data modeling.
 
 There are existing approaches that transform shape schemes into UML diagrams. These representations, which use simple boxes connected by lines, provide a quick overview of the data structure in a graph, benefiting both technically skilled users and those less familiar with the concepts. However, these visualizations are most effective when dealing with relatively simple schemas with fewer shapes. When the number of shapes increases, the resulting images can become too complex for users to interpret or display effectively. @Andra
 
 During this BioHackathon, we proposed alternative visualizations to address this issue. All the proposed methods focus on viewing a subset of the schema while allowing users to explore different regions of the overall structure. The three main proposals are as follows:
 
-- Graph-like visualization for python Jupyter using yFiles. This library offers various graph-based representations of schemas, which can be more or less interactive. While primarily used within Python Jupyter notebooks, static views of the graphs can be exported to different formats for reuse in other contexts. @Kozo
+- Graph-like visualization for Python Jupyter using yFiles. This library offers various graph-based representations of schemas, which can be more or less interactive. While primarily used within Python Jupyter notebooks, static views of the graphs can be exported to different formats for reuse in other contexts. @Kozo
 
 - Partial html views. This visualization style involves creating HTML views centered on a seed shape, displaying only the shapes in its immediate neighborhood. Each shape connected to the seed would be clickable, allowing the user to navigate to another HTML view with a different seed shape and thus exploring the whole schema. @Jose
 
-- Interactive web views with zoom in/out capabilities. This proposal extends the previous concept. The core idea remains the same: enabling exploration of large schemas by focusing on local sections. However, in this case, the sections are not limited to static representations of a shape and its immediate neighborhood. Instead, dynamically generated subgraphs of related shapes, including those not directly connected to the seed, are displayed. The user would be able to configure both the zoom level and the area to focus on, imitating classic map visualizations. @Yasunori
+- Interactive web views with zoom in/out capabilities. This proposal extends the previous concept. The core idea remains the same: enabling exploration of large schemas by focusing on local sections. However, in this case, the sections are not limited to static representations of a shape and its immediate neighborhood. Instead, dynamically generated subgraphs of related shapes, including those not directly connected to the seed, are displayed. The user would be able to configure both the zoom level and the area to focus on, providing classic map visualizations. @Yasunori
 
 
 ## Conclusions 
@@ -143,7 +155,7 @@ By using shape extractors such as sheXer or [Jerven's] to generate these shape s
 
 ## Acknowledgements
 
-[...]
+Many thanks are due to the organisers of BioHackathon 2024 and to the DBCLS for organising an extremely useful event to test out new ideas, build new collaborations and reinforce existing ones.[...]
 
 ## References
 
