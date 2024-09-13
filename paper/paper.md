@@ -34,8 +34,7 @@ authors:
     affiliation: 2
     orcid: 0000-0000-0000-0000
   - name: Gos Micklem
-    affiliation: 2
-    affiliation: 4
+    affiliation: 2, 4
     orcid: 0000-0002-6883-6168
   - name: Chunlei Wu
     affiliation: 2
