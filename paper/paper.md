@@ -30,9 +30,9 @@ authors:
   - name: Hikaru Nagazumi
     affiliation: 2
     orcid: 0000-0000-0000-0000
-  - name: Núria Queralt Rosinach
-    affiliation: 2
-    orcid: 0000-0000-0000-0000
+  - name: Núria Queralt-Rosinach
+    affiliation: 5
+    orcid: 0000-0003-0169-8159
   - name: Gos Micklem
     affiliation: 2, 4
     orcid: 0000-0002-6883-6168
@@ -48,6 +48,8 @@ affiliations:
     index: 3
   - name: Department of Genetics, University of Cambridge, Cambridge CB2 3EH, United Kingdom
     index: 4
+  - name: Department of Human Genetics, Leiden University Medical Center, 2333 ZA Leiden, The Netherlands
+    index: 5
   
     
 date: 04 September 2024
