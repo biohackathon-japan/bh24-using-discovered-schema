@@ -9,7 +9,7 @@ tags:
   - Templates
   - Data modelling
 authors:
-  - name: Daniel Fern{\'a}ndez-Álvarez
+  - name: Daniel Fernández-Álvarez
     affiliation: 1
     orcid: 0000-0002-8666-7660
   - name: Jerven Bolleman
@@ -33,7 +33,7 @@ authors:
     affiliation: 7
     orcid: 0000-0003-0169-8159
   - name: Gos Micklem
-    affiliation: 8
+    affiliation: 3,8
     orcid: 0000-0002-6883-6168
   - name: Chunlei Wu
     affiliation: 9
@@ -110,7 +110,7 @@ Here we were able to use sheXer, to mine the FlyMine-QLever endpoint, and to ass
 
 Thus we have demonstrated that it is possible to infer an equivalent description of the InterMine data model and have a plan to develop the use of the InterMine BlueGenes user interface on arbitrary SPARQL endpoints.
 
-*BioThings*: BioThings is an API ecosystem that provides information on a wide range of biomedical entities represented in the biological knowledge space, such as genes, genetic variants, drugs, chemicals, diseases, and more.
+*BioThings*: [BioThings](https://biothings.io/) is an API ecosystem that provides information on a wide range of biomedical entities represented in the biological knowledge space, such as genes, genetic variants, drugs, chemicals, diseases, and more.
 
 The current internal data models in BioThings are expressed in JSON. We found that converting these models into ShEx schemas is entirely feasible. Moreover, we determined that shape schemas are expressive enough to supply information to BioThings services that currently rely on the JSON models. While the existing JSON-based approach is sufficient to support current services, using shape schemas to define data models offers two key advantages: first, the data can be made fully compatible with Semantic Web technologies; second, shape schemas can be leveraged with existing schema validators for improved data maintenance.
 
