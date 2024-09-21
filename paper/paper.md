@@ -9,7 +9,7 @@ tags:
   - Templates
   - Data modelling
 authors:
-  - name: Daniel Fernández-Álvarez
+  - name: Daniel Fern{\'a}ndez-Álvarez
     affiliation: 1
     orcid: 0000-0002-8666-7660
   - name: Jerven Bolleman
