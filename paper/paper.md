@@ -70,7 +70,7 @@ group: Using (discovered) schemes
 git_url: https://github.com/biohackathon-japan/bh24-using-discovered-schema/blob/main/paper/paper.md
 # This is the short authors description that is used at the
 # bottom of the generated paper (typically the first two authors):
-authors_short: First Author \emph{et al.}
+authors_short: Daniel Fernández-Álvarez, Jerven Bolleman \emph{et al.}
 ---
 
 
