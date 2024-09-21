@@ -55,7 +55,7 @@ affiliations:
     index: 7
   - name: Department of Genetics, University of Cambridge, Cambridge CB2 3EH, United Kingdom.
     index: 8
-  - name: Scripps Research, La Jolla, California, United States of America.
+  - name: Department of Integrative, Structural and Computational Biology, Scripps Research, La Jolla, California.
     index: 9
 
     
@@ -70,7 +70,7 @@ group: Using (discovered) schemes
 git_url: https://github.com/biohackathon-japan/bh24-using-discovered-schema/blob/main/paper/paper.md
 # This is the short authors description that is used at the
 # bottom of the generated paper (typically the first two authors):
-# authors_short: First Author \emph{et al.}
+authors_short: First Author \emph{et al.}
 ---
 
 
@@ -110,9 +110,9 @@ Here we were able to use sheXer, to mine the FlyMine-QLever endpoint, and to ass
 
 Thus we have demonstrated that it is possible to infer an equivalent description of the InterMine data model and have a plan to develop the use of the InterMine BlueGenes user interface on arbitrary SPARQL endpoints.
 
-*BioThings*: Biothings is [...] @Chunlei.
+*BioThings*: BioThings is an API ecosystem that provides information on a wide range of biomedical entities represented in the biological knowledge space, such as genes, genetic variants, drugs, chemicals, diseases, and more.
 
-The current data models used in BioThings are expressed in a JSON representation. While this approach is sufficient for the necessary services, it is not RDF. However, we found that transforming this representation into ShEx schemas is feasible. This transformation offers two advantages: the data could be made fully compatible with semantic web technologies, and the ShEx schemas could be used with schema validators for data maintenance.
+The current internal data models in BioThings are expressed in JSON. We found that converting these models into ShEx schemas is entirely feasible. Moreover, we determined that shape schemas are expressive enough to supply information to BioThings services that currently rely on the JSON models. While the existing JSON-based approach is sufficient to support current services, using shape schemas to define data models offers two key advantages: first, the data can be made fully compatible with Semantic Web technologies; second, shape schemas can be leveraged with existing schema validators for improved data maintenance.
 
 ## SPARQL
 
