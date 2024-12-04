@@ -73,6 +73,9 @@ git_url: https://github.com/biohackathon-japan/bh24-using-discovered-schema/blob
 authors_short: Daniel Fernández-Álvarez, Jerven Bolleman \emph{et al.}
 ---
 
+# Abstract
+
+RDF shapes are formal expressions of schema structures in RDF data. Their primary purpose is twofold: describing and validating RDF data. However, as machine-readable representations of the expected structures in a given data source, RDF shapes can be applied to various tasks that require automatic comprehension of data schemas. In this paper, we present our work conducted during the DBCLS BioHackathon 2024 in Fukushima, Japan, to harness the potential of RDF shapes. The identified and partially implemented use cases include the generation and validation of SPARQL queries, data and schema visualization, mappings to other formal syntaxes, and applications in data modeling scenarios.
 
 # Introduction
 
