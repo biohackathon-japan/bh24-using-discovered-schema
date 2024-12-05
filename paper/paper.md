@@ -21,7 +21,7 @@ authors:
   - name: Yasunori Yamamoto
     affiliation: 3
     orcid: 0000-0002-6943-6887
-  - name: Andra Waagmaaster
+  - name: Andra Waagmeester
     affiliation: 4
     orcid: 0000-0001-9773-4008
   - name: Kozo Nishida
